@@ -6,16 +6,19 @@
   <title>Content Management</title>
 </head>
 <body>
-  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <!-- Decap CMS (formerly Netlify CMS) -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
+    window.CMS_MANUAL_INIT = true;
+    
+    // 初始化 CMS
     CMS.init({
       config: {
         backend: {
           name: 'github',
           repo: 'shawnvudi888/laysun.co-2.26',
           branch: 'main',
-          base_url: 'https://api.netlify.com',
-          auth_endpoint: 'auth'
+          auth_scope: 'repo'
         },
         media_folder: 'images',
         public_folder: '/images',
