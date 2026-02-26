@@ -779,3 +779,20 @@
     </script>
 </body>
 </html>
+<div id="content">
+  <h1 id="title">Loading...</h1>
+  <h2 id="subtitle"></h2>
+  <p id="intro"></p>
+  <button id="btn"></button>
+</div>
+
+<script>
+  fetch('content/home.json')
+    .then(r => r.json())
+    .then(data => {
+      document.getElementById('title').textContent = data.title;
+      document.getElementById('subtitle').textContent = data.subtitle;
+      document.getElementById('intro').textContent = data.intro;
+      document.getElementById('btn').textContent = data.button;
+    });
+</script>
