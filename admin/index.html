@@ -1,62 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Management</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Content</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+    h1 { color: #333; }
+    .file-list { list-style: none; padding: 0; }
+    .file-list li { margin: 10px 0; padding: 15px; background: #f5f5f5; border-radius: 8px; }
+    .file-list a { color: #0070f3; text-decoration: none; font-weight: 500; }
+    .file-list a:hover { text-decoration: underline; }
+    .hint { color: #666; font-size: 14px; margin-top: 30px; }
+  </style>
 </head>
 <body>
-  <script src="https://unpkg.com/netlify-cms@2.10.192/dist/netlify-cms.js"></script>
-  <script>
-    CMS.init({
-      config: {
-        backend: {
-          name: 'git-gateway',
-          branch: 'main'
-        },
-        media_folder: 'images',
-        public_folder: '/images',
-        collections: [
-          {
-            name: 'pages',
-            label: 'Pages',
-            files: [
-              {
-                name: 'homepage',
-                label: 'Homepage',
-                file: 'content/home.json',
-                fields: [
-                  { label: 'Main Title', name: 'title', widget: 'string' },
-                  { label: 'Subtitle', name: 'subtitle', widget: 'string' },
-                  { label: 'Introduction', name: 'intro', widget: 'text' },
-                  { label: 'Button Text', name: 'button', widget: 'string' }
-                ]
-              },
-              {
-                name: 'about',
-                label: 'About Page',
-                file: 'content/about.json',
-                fields: [
-                  { label: 'Page Title', name: 'title', widget: 'string' },
-                  { label: 'Company Description', name: 'description', widget: 'markdown' }
-                ]
-              },
-              {
-                name: 'contact',
-                label: 'Contact Page',
-                file: 'content/contact.json',
-                fields: [
-                  { label: 'Page Title', name: 'title', widget: 'string' },
-                  { label: 'Contact Info', name: 'info', widget: 'text' },
-                  { label: 'Email', name: 'email', widget: 'string' }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    });
-  </script>
+  <h1>📝 Edit Website Content</h1>
+  <p>Click any file below to edit in GitHub:</p>
+  
+  <ul class="file-list">
+    <li>
+      <a href="https://github.com/shawnvudi888/laysun.co-2.26/edit/main/content/home.json" target="_blank">
+        🏠 Homepage Content
+      </a>
+      <br><small>Main title, subtitle, introduction</small>
+    </li>
+    <li>
+      <a href="https://github.com/shawnvudi888/laysun.co-2.26/edit/main/content/about.json" target="_blank">
+        ℹ️ About Page Content
+      </a>
+      <br><small>Company description</small>
+    </li>
+    <li>
+      <a href="https://github.com/shawnvudi888/laysun.co-2.26/edit/main/content/contact.json" target="_blank">
+        📧 Contact Page Content
+      </a>
+      <br><small>Contact info, email</small>
+    </li>
+    <li>
+      <a href="https://github.com/shawnvudi888/laysun.co-2.26/edit/main/index.html" target="_blank">
+        🎨 Homepage HTML
+      </a>
+      <br><small>Full HTML template</small>
+    </li>
+  </ul>
+  
+  <p class="hint">
+    💡 Changes are automatically deployed to your live site in ~1 minute.
+  </p>
 </body>
 </html>
