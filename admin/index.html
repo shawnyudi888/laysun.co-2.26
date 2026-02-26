@@ -6,62 +6,64 @@
   <title>Content Management</title>
 </head>
 <body>
-  <!-- Decap CMS (formerly Netlify CMS) -->
+  <!-- CMS 挂载点 -->
+  <div id="nc-root"></div>
+  
+  <!-- Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
-    window.CMS_MANUAL_INIT = true;
+    // 配置
+    const config = {
+      backend: {
+        name: 'github',
+        repo: 'shawnvudi888/laysun.co-2.26',
+        branch: 'main',
+        auth_scope: 'repo'
+      },
+      media_folder: 'images',
+      public_folder: '/images',
+      collections: [
+        {
+          name: 'pages',
+          label: 'Pages',
+          files: [
+            {
+              name: 'homepage',
+              label: 'Homepage',
+              file: 'content/home.json',
+              fields: [
+                { label: 'Main Title', name: 'title', widget: 'string' },
+                { label: 'Subtitle', name: 'subtitle', widget: 'string' },
+                { label: 'Introduction', name: 'intro', widget: 'text' },
+                { label: 'Button Text', name: 'button', widget: 'string' }
+              ]
+            },
+            {
+              name: 'about',
+              label: 'About Page',
+              file: 'content/about.json',
+              fields: [
+                { label: 'Page Title', name: 'title', widget: 'string' },
+                { label: 'Company Description', name: 'description', widget: 'markdown' }
+              ]
+            },
+            {
+              name: 'contact',
+              label: 'Contact Page',
+              file: 'content/contact.json',
+              fields: [
+                { label: 'Page Title', name: 'title', widget: 'string' },
+                { label: 'Contact Info', name: 'info', widget: 'text' },
+                { label: 'Email', name: 'email', widget: 'string' }
+              ]
+            }
+          ]
+        }
+      ]
+    };
     
-    // 初始化 CMS
-    CMS.init({
-      config: {
-        backend: {
-          name: 'github',
-          repo: 'shawnvudi888/laysun.co-2.26',
-          branch: 'main',
-          auth_scope: 'repo'
-        },
-        media_folder: 'images',
-        public_folder: '/images',
-        collections: [
-          {
-            name: 'pages',
-            label: 'Pages',
-            files: [
-              {
-                name: 'homepage',
-                label: 'Homepage',
-                file: 'content/home.json',
-                fields: [
-                  { label: 'Main Title', name: 'title', widget: 'string' },
-                  { label: 'Subtitle', name: 'subtitle', widget: 'string' },
-                  { label: 'Introduction', name: 'intro', widget: 'text' },
-                  { label: 'Button Text', name: 'button', widget: 'string' }
-                ]
-              },
-              {
-                name: 'about',
-                label: 'About Page',
-                file: 'content/about.json',
-                fields: [
-                  { label: 'Page Title', name: 'title', widget: 'string' },
-                  { label: 'Company Description', name: 'description', widget: 'markdown' }
-                ]
-              },
-              {
-                name: 'contact',
-                label: 'Contact Page',
-                file: 'content/contact.json',
-                fields: [
-                  { label: 'Page Title', name: 'title', widget: 'string' },
-                  { label: 'Contact Info', name: 'info', widget: 'text' },
-                  { label: 'Email', name: 'email', widget: 'string' }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    });
+    // 初始化
+    CMS.init({ config });
   </script>
 </body>
 </html>
