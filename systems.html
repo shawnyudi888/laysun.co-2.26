@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systems | LAYSUN - Artificial Horticulture Systems for Commercial Environments</title>
+    <meta name="description" content="Integrated design, engineered materials, and scalable deployment for global commercial spaces.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'laysun-green': '#1a3a2f',
+                        'laysun-green-light': '#2d5a4a',
+                        'laysun-gray': '#f5f5f5',
+                        'laysun-dark': '#1a1a1a',
+                        'laysun-text': '#333333'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'display': ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333333;
+            background-color: #fafafa;
+        }
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(to right, rgba(26, 58, 47, 0.9) 0%, rgba(26, 58, 47, 0.6) 50%, rgba(26, 58, 47, 0.3) 100%);
+        }
+        .text-balance {
+            text-wrap: balance;
+        }
+        .section-padding {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+        @media (min-width: 1024px) {
+            .section-padding {
+                padding-top: 8rem;
+                padding-bottom: 8rem;
+            }
+        }
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .system-card {
+            transition: all 0.4s ease;
+            border: 1px solid #e5e5e5;
+        }
+        .system-card:hover {
+            border-color: #1a3a2f;
+            background-color: #fafafa;
+        }
+        .architecture-layer {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid #e5e5e5;
+        }
+        .architecture-layer::before {
+            content: '';
+            position: absolute;
+            left: -2px;
+            top: 0;
+            width: 2px;
+            height: 0;
+            background-color: #1a3a2f;
+            transition: height 0.6s ease;
+        }
+        .architecture-layer.active::before {
+            height: 100%;
+        }
+        .layer-number {
+            position: absolute;
+            left: -1rem;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background-color: #1a3a2f;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: bold;
+            font-size: 0.875rem;
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased smooth-scroll">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div class="w-10 h-10 bg-laysun-green flex items-center justify-center">
+                        <i data-lucide="layers" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <div>
+                        <span class="font-display font-bold text-2xl tracking-tight text-laysun-green">LAYSUN</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="/" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">Home</a>
+                    <a href="/systems" class="text-sm font-medium text-laysun-green uppercase tracking-wider border-b-2 border-laysun-green pb-1">Systems</a>
+                    <a href="/manufacturing" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">Manufacturing</a>
+                    <a href="/projects" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">Projects</a>
+                    <a href="/about" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">About</a>
+                    <a href="/contact" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">Contact</a>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="/contact" class="bg-laysun-green text-white px-6 py-3 text-sm font-medium uppercase tracking-wider hover:bg-laysun-green-light transition-colors">
+                        Request Consultation
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden p-2" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu" class="w-6 h-6 text-laysun-green"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100">
+            <div class="px-6 py-4 space-y-3">
+                <a href="/" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">Home</a>
+                <a href="/systems" class="block py-2 text-sm font-medium text-laysun-green uppercase tracking-wider">Systems</a>
+                <a href="/manufacturing" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">Manufacturing</a>
+                <a href="/projects" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">Projects</a>
+                <a href="/about" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">About</a>
+                <a href="/contact" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">Contact</a>
+                <a href="/contact" class="block mt-4 bg-laysun-green text-white px-6 py-3 text-center text-sm font-medium uppercase tracking-wider">
+                    Request Consultation
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 01 Hero Section -->
+    <section class="relative h-screen min-h-[700px] flex items-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80" 
+                 alt="Commercial atrium with artificial horticulture system" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-20">
+            <div class="max-w-3xl reveal active">
+                <p class="text-laysun-green font-semibold uppercase tracking-widest mb-4 text-sm">System Architecture</p>
+                <h1 class="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6 text-balance uppercase tracking-tight">
+                    Artificial Horticulture Systems<br>
+                    <span class="text-gray-300">Structured for Commercial Environments</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl font-light leading-relaxed">
+                    Integrated design, engineered materials, and scalable deployment for global commercial spaces.
+                </p>
+                <a href="#system-definition" class="inline-flex items-center justify-center bg-white text-laysun-green px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-gray-100 transition-colors">
+                    Request System Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 02 What Is a System? -->
+    <section id="system-definition" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <!-- Text Content -->
+                <div class="reveal">
+                    <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-laysun-green mb-8 uppercase tracking-tight leading-tight">
+                        What Defines an Artificial Horticulture System?
+                    </h2>
+                    <div class="space-y-6 text-gray-600 text-base leading-relaxed">
+                        <p class="text-lg text-laysun-dark font-medium">
+                            An artificial horticulture system is not a standalone decorative element.
+                        </p>
+                        <p>
+                            It is a structured integration of spatial planning, material engineering, compliance alignment, and long-term operational considerations.
+                        </p>
+                        <p class="font-medium text-laysun-dark pt-4 border-t border-gray-200">
+                            A system approach ensures:
+                        </p>
+                        <ul class="space-y-4 mt-4">
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 bg-laysun-green/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="layout" class="w-4 h-4 text-laysun-green"></i>
+                                </div>
+                                <span>Structural coordination with architecture</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 bg-laysun-green/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-laysun-green"></i>
+                                </div>
+                                <span>Consistent material standards</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 bg-laysun-green/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="shield" class="w-4 h-4 text-laysun-green"></i>
+                                </div>
+                                <span>Fire and safety alignment where required</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 bg-laysun-green/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="copy" class="w-4 h-4 text-laysun-green"></i>
+                                </div>
+                                <span>Repeatable deployment across multiple sites</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 bg-laysun-green/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="clock" class="w-4 h-4 text-laysun-green"></i>
+                                </div>
+                                <span>Reduced long-term maintenance cycles</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="reveal relative">
+                    <div class="aspect-[4/5] bg-gray-100 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80" 
+                             alt="System structure diagram" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <!-- System Level Badge -->
+                    <div class="absolute -bottom-6 -right-6 bg-laysun-green text-white p-6 shadow-xl">
+                        <p class="text-xs uppercase tracking-widest mb-1 opacity-80">Integration Level</p>
+                        <p class="font-display font-bold text-2xl">Level 3</p>
+                        <p class="text-sm opacity-90">Engineered Systems</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 03 System Architecture Layers -->
+    <section class="section-padding bg-laysun-gray">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="mb-16 reveal">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-laysun-green mb-4 uppercase tracking-tight">
+                    System Architecture Layers
+                </h2>
+                <p class="text-gray-600 max-w-2xl">
+                    Each project is structured across defined layers:
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <!-- Architecture Diagram -->
+                <div class="reveal bg-white p-8 lg:p-12 shadow-sm">
+                    <div class="space-y-8">
+                        <!-- Layer 1 -->
+                        <div class="architecture-layer active pb-8">
+                            <div class="layer-number">1</div>
+                            <h3 class="font-display font-bold text-lg uppercase tracking-wide text-laysun-dark mb-2">Spatial Layer</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Alignment with ceiling height, load conditions, circulation flow, and visual hierarchy.
+                            </p>
+                        </div>
+                        
+                        <!-- Layer 2 -->
+                        <div class="architecture-layer active pb-8">
+                            <div class="layer-number">2</div>
+                            <h3 class="font-display font-bold text-lg uppercase tracking-wide text-laysun-dark mb-2">Structural Layer</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Internal reinforcement, trunk engineering, modular canopy configuration.
+                            </p>
+                        </div>
+                        
+                        <!-- Layer 3 -->
+                        <div class="architecture-layer active pb-8">
+                            <div class="layer-number">3</div>
+                            <h3 class="font-display font-bold text-lg uppercase tracking-wide text-laysun-dark mb-2">Material Layer</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                PE composition, UV resistance, surface finishing, fire-ready material options.
+                            </p>
+                        </div>
+                        
+                        <!-- Layer 4 -->
+                        <div class="architecture-layer active pb-8">
+                            <div class="layer-number">4</div>
+                            <h3 class="font-display font-bold text-lg uppercase tracking-wide text-laysun-dark mb-2">Compliance Layer</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Commercial environment alignment and installation safety standards.
+                            </p>
+                        </div>
+                        
+                        <!-- Layer 5 -->
+                        <div class="architecture-layer active">
+                            <div class="layer-number">5</div>
+                            <h3 class="font-display font-bold text-lg uppercase tracking-wide text-laysun-dark mb-2">Lifecycle Layer</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Durability planning and long-term operational stability.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Representation -->
+                <div class="reveal">
+                    <div class="aspect-square bg-gray-200 overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" 
+                             alt="Layered system architecture" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="bg-laysun-green text-white p-6">
+                        <p class="text-sm uppercase tracking-widest mb-2 opacity-80">Engineering Note</p>
+                        <p class="text-sm leading-relaxed">
+                            Each layer interacts with adjacent layers. Material selection affects structural requirements; spatial constraints inform compliance strategy.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 System Categories -->
+    <section class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-laysun-green mb-4 uppercase tracking-tight">
+                    System Categories
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Engineered solutions for diverse commercial applications
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Modular Artificial Tree Systems -->
+                <div class="system-card bg-white p-8 lg:p-10 reveal">
+                    <div class="w-14 h-14 bg-laysun-green/10 flex items-center justify-center mb-6">
+                        <i data-lucide="tree-pine" class="w-7 h-7 text-laysun-green"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-laysun-dark mb-3 uppercase tracking-wide">
+                        Modular Artificial Tree Systems
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                        Designed for large lobby spaces and atrium environments. Structured canopy and trunk systems allow scalable deployment.
+                    </p>
+                    <div class="flex items-center gap-2 text-xs text-gray-500 uppercase tracking-wider">
+                        <i data-lucide="map-pin" class="w-3 h-3"></i>
+                        <span>Hotels, Malls, Atriums</span>
+                    </div>
+                </div>
+
+                <!-- Vertical Green Wall Systems -->
+                <div class="system-card bg-white p-8 lg:p-10 reveal">
+                    <div class="w-14 h-14 bg-laysun-green/10 flex items-center justify-center mb-6">
+                        <i data-lucide="layout-grid" class="w-7 h-7 text-laysun-green"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-laysun-dark mb-3 uppercase tracking-wide">
+                        Vertical Green Wall Systems
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                        Panel-based modular plant walls structured for retail and hospitality interiors.
+                    </p>
+                    <div class="flex items-center gap-2 text-xs text-gray-500 uppercase tracking-wider">
+                        <i data-lucide="map-pin" class="w-3 h-3"></i>
+                        <span>Retail, Offices, Public Spaces</span>
+                    </div>
+                </div>
+
+                <!-- Suspended Green Installations -->
+                <div class="system-card bg-white p-8 lg:p-10 reveal">
+                    <div class="w-14 h-14 bg-laysun-green/10 flex items-center justify-center mb-6">
+                        <i data-lucide="move-vertical" class="w-7 h-7 text-laysun-green"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-laysun-dark mb-3 uppercase tracking-wide">
+                        Suspended Green Installations
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                        Engineered overhead greenery designed for open commercial ceilings.
+                    </p>
+                    <div class="flex items-center gap-2 text-xs text-gray-500 uppercase tracking-wider">
+                        <i data-lucide="map-pin" class="w-3 h-3"></i>
+                        <span>Airports, Lobbies, Exhibition Halls</span>
+                    </div>
+                </div>
+
+                <!-- Custom Integrated Systems -->
+                <div class="system-card bg-white p-8 lg:p-10 reveal">
+                    <div class="w-14 h-14 bg-laysun-green/10 flex items-center justify-center mb-6">
+                        <i data-lucide="settings" class="w-7 h-7 text-laysun-green"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-laysun-dark mb-3 uppercase tracking-wide">
+                        Custom Integrated Systems
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                        Project-based artificial horticulture integration aligned with architectural concepts.
+                    </p>
+                    <div class="flex items-center gap-2 text-xs text-gray-500 uppercase tracking-wider">
+                        <i data-lucide="map-pin" class="w-3 h-3"></i>
+                        <span>Bespoke Commercial Projects</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 reveal">
+                <a href="/projects" class="inline-flex items-center gap-2 text-laysun-green font-semibold uppercase tracking-wider text-sm hover:gap-4 transition-all">
+                    Explore Project Cases
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05 Engineering Logic & Integration -->
+    <section class="section-padding bg-laysun-dark text-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <!-- Image -->
+                <div class="reveal order-2 lg:order-1">
+                    <div class="aspect-[4/3] bg-gray-800 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" 
+                             alt="Engineering and manufacturing alignment" 
+                             class="w-full h-full object-cover opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-laysun-dark to-transparent"></div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="reveal order-1 lg:order-2">
+                    <h2 class="font-display text-3xl md:text-4xl font-bold mb-6 uppercase tracking-tight leading-tight">
+                        Engineering Logic Behind Every System
+                    </h2>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        Our systems are developed with manufacturing feasibility, installation efficiency, and spatial coordination in mind.
+                    </p>
+                    <p class="text-white font-medium mb-6">
+                        Design and production teams operate in alignment to ensure:
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-4">
+                            <div class="w-2 h-2 bg-laysun-green mt-2 flex-shrink-0"></div>
+                            <span class="text-gray-300">Scalable mold development</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-2 h-2 bg-laysun-green mt-2 flex-shrink-0"></div>
+                            <span class="text-gray-300">Structured batch production</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-2 h-2 bg-laysun-green mt-2 flex-shrink-0"></div>
+                            <span class="text-gray-300">Installation-ready configuration</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-2 h-2 bg-laysun-green mt-2 flex-shrink-0"></div>
+                            <span class="text-gray-300">Defined load-bearing integration</span>
+                        </li>
+                    </ul>
+                    <div class="border-l-4 border-laysun-green pl-6">
+                        <p class="text-sm text-gray-400 italic">
+                            This alignment enables predictable commercial execution.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 06 Deployment Process -->
+    <section class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-laysun-green mb-4 uppercase tracking-tight">
+                    Structured Deployment Process
+                </h2>
+            </div>
+
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gray-200 -translate-y-1/2"></div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 relative">
+                    <!-- Step 1 -->
+                    <div class="reveal relative bg-white lg:bg-transparent p-6 lg:p-0">
+                        <div class="hidden lg:flex w-12 h-12 bg-laysun-green text-white items-center justify-center font-display font-bold text-lg mx-auto mb-6 relative z-10">
+                            01
+                        </div>
+                        <div class="lg:hidden w-12 h-12 bg-laysun-green text-white flex items-center justify-center font-display font-bold text-lg mb-4">
+                            01
+                        </div>
+                        <h3 class="font-display font-bold text-lg uppercase tracking-wide text-laysun-dark mb-2 lg:text-center">
+                            Spatial Review
+                        </h3>
+                        <p class="text-sm text-gray-600 leading-relaxed lg:text-center">
+                            Project requirements and environment analysis.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="reveal relative bg-white lg:bg-transparent p-6 lg:p-0">
+                        <div class="hidden lg:flex w-12 h-12 bg-laysun-green text-white items-center justify-center font-display font-bold text-lg mx-auto mb-6 relative z-10">
+                            02
+                        </div>
+                        <div class="lg:hidden w-12 h-12 bg-laysun-green text-white flex items-center justify-center font-display font-bold text-lg mb-4">
+                            02
+                        </div>
+                        <h3 class="font-display font-bold text-lg uppercase tracking-wide text-laysun-dark mb-2 lg:text-center">
+                            System Planning
+                        </h3>
+                        <p class="text-sm text-gray-600 leading-relaxed lg:text-center">
+                            Structure definition and material alignment.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="reveal relative bg-white lg:bg-transparent p-6 lg:p-0">
+                        <div class="hidden lg:flex w-12 h-12 bg-laysun-green text-white items-center justify-center font-display font-bold text-lg mx-auto mb-6 relative z-10">
+                            03
+                        </div>
+                        <div class="lg:hidden w-12 h-12 bg-laysun-green text-white flex items-center justify-center font-display font-bold text-lg mb-4">
+                            03
+                        </div>
+                        <h3 class="font-display font-bold text-lg uppercase tracking-wide text-laysun-dark mb-2 lg:text-center">
+                            Manufacturing
+                        </h3>
+                        <p class="text-sm text-gray-600 leading-relaxed lg:text-center">
+                            Batch scheduling and quality control.
+                        </p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="reveal relative bg-white lg:bg-transparent p-6 lg:p-0">
+                        <div class="hidden lg:flex w-12 h-12 bg-laysun-green text-white items-center justify-center font-display font-bold text-lg mx-auto mb-6 relative z-10">
+                            04
+                        </div>
+                        <div class="lg:hidden w-12 h-12 bg-laysun-green text-white flex items-center justify-center font-display font-bold text-lg mb-4">
+                            04
+                        </div>
+                        <h3 class="font-display font-bold text-lg uppercase tracking-wide text-laysun-dark mb-2 lg:text-center">
+                            Delivery
+                        </h3>
+                        <p class="text-sm text-gray-600 leading-relaxed lg:text-center">
+                            Logistics coordination and deployment guidance.
+                        </p>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="reveal relative bg-white lg:bg-transparent p-6 lg:p-0">
+                        <div class="hidden lg:flex w-12 h-12 bg-laysun-green text-white items-center justify-center font-display font-bold text-lg mx-auto mb-6 relative z-10">
+                            05
+                        </div>
+                        <div class="lg:hidden w-12 h-12 bg-laysun-green text-white flex items-center justify-center font-display font-bold text-lg mb-4">
+                            05
+                        </div>
+                        <h3 class="font-display font-bold text-lg uppercase tracking-wide text-laysun-dark mb-2 lg:text-center">
+                            Lifecycle Support
+                        </h3>
+                        <p class="text-sm text-gray-600 leading-relaxed lg:text-center">
+                            Long-term system performance consultation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 07 Why System vs Product -->
+    <section class="section-padding bg-laysun-gray">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-laysun-green mb-4 uppercase tracking-tight">
+                    System Approach vs Standalone Product Supply
+                </h2>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="comparison-grid gap-0 border border-gray-300 bg-white reveal">
+                    <!-- Header -->
+                    <div class="bg-gray-100 p-6 border-b border-gray-300">
+                        <h3 class="font-display font-bold text-lg uppercase tracking-wide text-gray-500">Standalone Product</h3>
+                    </div>
+                    <div class="bg-laysun-green p-6 border-b border-laysun-green">
+                        <h3 class="font-display font-bold text-lg uppercase tracking-wide text-white">Engineered System</h3>
+                    </div>
+
+                    <!-- Row 1 -->
+                    <div class="p-6 border-b border-gray-200">
+                        <p class="text-gray-600">Decorative focus</p>
+                    </div>
+                    <div class="p-6 border-b border-gray-200 bg-laysun-green/5">
+                        <p class="text-laysun-dark font-medium">Structural integration</p>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="p-6 border-b border-gray-200">
+                        <p class="text-gray-600">Short-term placement</p>
+                    </div>
+                    <div class="p-6 border-b border-gray-200 bg-laysun-green/5">
+                        <p class="text-laysun-dark font-medium">Long-term planning</p>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="p-6 border-b border-gray-200">
+                        <p class="text-gray-600">Inconsistent scaling</p>
+                    </div>
+                    <div class="p-6 border-b border-gray-200 bg-laysun-green/5">
+                        <p class="text-laysun-dark font-medium">Repeatable deployment</p>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="p-6">
+                        <p class="text-gray-600">Minimal compliance review</p>
+                    </div>
+                    <div class="p-6 bg-laysun-green/5">
+                        <p class="text-laysun-dark font-medium">Safety & material alignment</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center reveal">
+                    <p class="text-gray-600 text-sm max-w-2xl mx-auto">
+                        System thinking ensures commercial environments remain consistent across locations and over time.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 08 Application Scenarios -->
+    <section class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="mb-16 reveal">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-laysun-green mb-4 uppercase tracking-tight">
+                    Application Scenarios
+                </h2>
+                <p class="text-gray-600 max-w-2xl">
+                    Our artificial horticulture systems are structured for:
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <div class="reveal group cursor-pointer">
+                    <div class="aspect-[4/5] bg-gray-100 overflow-hidden mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80" 
+                             alt="Hospitality" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-laysun-green/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i data-lucide="arrow-right" class="w-8 h-8 text-white"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-display font-bold text-sm uppercase tracking-wide text-center">Hospitality Lobbies</h3>
+                </div>
+
+                <div class="reveal group cursor-pointer">
+                    <div class="aspect-[4/5] bg-gray-100 overflow-hidden mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&q=80" 
+                             alt="Retail" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-laysun-green/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i data-lucide="arrow-right" class="w-8 h-8 text-white"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-display font-bold text-sm uppercase tracking-wide text-center">Retail Flagships</h3>
+                </div>
+
+                <div class="reveal group cursor-pointer">
+                    <div class="aspect-[4/5] bg-gray-100 overflow-hidden mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=400&q=80" 
+                             alt="Commercial Offices" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-laysun-green/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i data-lucide="arrow-right" class="w-8 h-8 text-white"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-display font-bold text-sm uppercase tracking-wide text-center">Commercial Offices</h3>
+                </div>
+
+                <div class="reveal group cursor-pointer">
+                    <div class="aspect-[4/5] bg-gray-100 overflow-hidden mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&q=80" 
+                             alt="Mixed-use" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-laysun-green/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i data-lucide="arrow-right" class="w-8 h-8 text-white"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-display font-bold text-sm uppercase tracking-wide text-center">Mixed-use Developments</h3>
+                </div>
+
+                <div class="reveal group cursor-pointer">
+                    <div class="aspect-[4/5] bg-gray-100 overflow-hidden mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=400&q=80" 
+                             alt="Public Spaces" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-laysun-green/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i data-lucide="arrow-right" class="w-8 h-8 text-white"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-display font-bold text-sm uppercase tracking-wide text-center">Public Atriums</h3>
+                </div>
+
+                <div class="reveal group cursor-pointer">
+                    <div class="aspect-[4/5] bg-gray-100 overflow-hidden mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=400&q=80" 
+                             alt="Exhibition" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-laysun-green/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i data-lucide="arrow-right" class="w-8 h-8 text-white"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-display font-bold text-sm uppercase tracking-wide text-center">Exhibition Spaces</h3>
+                </div>
+            </div>
+
+            <div class="mt-8 p-6 bg-laysun-gray reveal">
+                <p class="text-sm text-gray-600 text-center">
+                    Each environment requires spatial logic, material durability, and operational stability.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 09 Final CTA -->
+    <section class="section-padding bg-laysun-green text-white">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center reveal">
+            <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 uppercase tracking-tight leading-tight">
+                Structure Your Commercial Green Environment
+            </h2>
+            <p class="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
+                Discuss your project requirements with our system planning team.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/contact" class="inline-flex items-center justify-center bg-white text-laysun-green px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-gray-100 transition-colors">
+                    Request System Consultation
+                </a>
+                <a href="/manufacturing" class="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-white hover:text-laysun-green transition-colors">
+                    Contact Manufacturing Team
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-laysun-dark text-white py-16 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Company Info -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-8 bg-laysun-green flex items-center justify-center">
+                            <i data-lucide="layers" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="font-display font-bold text-xl tracking-tight">LAYSUN</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md leading-relaxed">
+                        Laysun Co-Creation (Guangzhou) Technology Co., Ltd.<br>
+                        Engineering artificial horticulture systems for commercial environments.
+                    </p>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <p>Email: info@laysun.co</p>
+                        <p>Sales: sales@laysun.co</p>
+                    </div>
+                </div>
+
+                <!-- Locations -->
+                <div>
+                    <h4 class="font-display font-bold text-sm uppercase tracking-wider mb-6 text-gray-300">Operations</h4>
+                    <div class="space-y-4 text-sm text-gray-400">
+                        <div>
+                            <p class="text-white font-medium mb-1">USA Office</p>
+                            <p>20 Transom Rd<br>Port Wentworth, Georgia 31407</p>
+                        </div>
+                        <div>
+                            <p class="text-white font-medium mb-1">China Factory</p>
+                            <p>No. 25 Qiaofeng Road<br>Qishi Town, Dongguan City<br>Guangdong Province</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social -->
+                <div>
+                    <h4 class="font-display font-bold text-sm uppercase tracking-wider mb-6 text-gray-300">Connect</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 border border-white/20 flex items-center justify-center hover:bg-white hover:text-laysun-dark transition-colors">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 border border-white/20 flex items-center justify-center hover:bg-white hover:text-laysun-dark transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 border border-white/20 flex items-center justify-center hover:bg-white hover:text-laysun-dark transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 uppercase tracking-wider">
+                <p>© 2024 Laysun Co-Creation (Guangzhou) Technology Co., Ltd.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-sm');
+            } else {
+                navbar.classList.remove('shadow-sm');
+            }
+        });
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+        // Architecture Layer Animation
+        const layerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.architecture-layer').forEach((el) => layerObserver.observe(el));
+    </script>
+</body>
+</html>
