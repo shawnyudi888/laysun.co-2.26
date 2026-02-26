@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | LAYSUN - Commercial Artificial Horticulture Products</title>
+    <meta name="description" content="Factory-based production of artificial trees, plants, and green walls for bulk commercial procurement.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'laysun-green': '#1a3a2f',
+                        'laysun-green-light': '#2d5a4a',
+                        'laysun-gray': '#f5f5f5',
+                        'laysun-dark': '#1a1a1a',
+                        'laysun-text': '#333333'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'display': ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333333;
+            background-color: #fafafa;
+        }
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(to right, rgba(26, 58, 47, 0.9) 0%, rgba(26, 58, 47, 0.6) 50%, rgba(26, 58, 47, 0.3) 100%);
+        }
+        .text-balance {
+            text-wrap: balance;
+        }
+        .section-padding {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+        @media (min-width: 1024px) {
+            .section-padding {
+                padding-top: 8rem;
+                padding-bottom: 8rem;
+            }
+        }
+        .product-card {
+            border: 1px solid #e5e5e5;
+            background-color: white;
+            transition: all 0.4s ease;
+        }
+        .product-card:hover {
+            border-color: #1a3a2f;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .product-image {
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            background-color: #f5f5f5;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        .spec-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #f5f5f5;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #666;
+        }
+        .category-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .category-card .category-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26, 58, 47, 0.9) 0%, transparent 100%);
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        .category-card:hover .category-overlay {
+            opacity: 0.95;
+        }
+        .category-card .category-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            color: white;
+            transform: translateY(10px);
+            transition: transform 0.3s ease;
+        }
+        .category-card:hover .category-content {
+            transform: translateY(0);
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .data-table th {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            color: #666;
+            background-color: #f5f5f5;
+        }
+        .data-table td {
+            font-size: 0.875rem;
+            color: #333;
+        }
+        .custom-dev-card {
+            background: linear-gradient(135deg, #1a3a2f 0%, #2d5a4a 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body class="antialiased smooth-scroll">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div class="w-10 h-10 bg-laysun-green flex items-center justify-center">
+                        <i data-lucide="layers" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <div>
+                        <span class="font-display font-bold text-2xl tracking-tight text-laysun-green">LAYSUN</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="/" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">Home</a>
+                    <a href="/systems/" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">Systems</a>
+                    <a href="/manufacturing/" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">Manufacturing</a>
+                    <a href="/products/" class="text-sm font-medium text-laysun-green uppercase tracking-wider border-b-2 border-laysun-green pb-1">Products</a>
+                    <a href="/projects/" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">Projects</a>
+                    <a href="/about/" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">About</a>
+                    <a href="/contact/" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">Contact</a>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="/contact/" class="bg-laysun-green text-white px-6 py-3 text-sm font-medium uppercase tracking-wider hover:bg-laysun-green-light transition-colors">
+                        Bulk Inquiry
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden p-2" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu" class="w-6 h-6 text-laysun-green"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100">
+            <div class="px-6 py-4 space-y-3">
+                <a href="/" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">Home</a>
+                <a href="/systems/" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">Systems</a>
+                <a href="/manufacturing/" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">Manufacturing</a>
+                <a href="/products/" class="block py-2 text-sm font-medium text-laysun-green uppercase tracking-wider">Products</a>
+                <a href="/projects/" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">Projects</a>
+                <a href="/about/" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">About</a>
+                <a href="/contact/" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">Contact</a>
+                <a href="/contact/" class="block mt-4 bg-laysun-green text-white px-6 py-3 text-center text-sm font-medium uppercase tracking-wider">
+                    Bulk Commercial Inquiry
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 01 Hero Section -->
+    <section class="relative h-[70vh] min-h-[600px] flex items-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80" 
+                 alt="Commercial artificial horticulture products" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-20">
+            <div class="max-w-3xl reveal active">
+                <p class="text-laysun-green font-semibold uppercase tracking-widest mb-4 text-sm">Product Catalog</p>
+                <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 text-balance uppercase tracking-tight">
+                    Commercial Artificial Horticulture Products
+                </h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl font-light leading-relaxed">
+                    Factory-based production for bulk commercial procurement. System-aligned specifications with predictable delivery.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#categories" class="inline-flex items-center justify-center bg-white text-laysun-green px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-gray-100 transition-colors">
+                        Explore Categories
+                    </a>
+                    <a href="#specifications" class="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-white hover:text-laysun-green transition-colors">
+                        View Specifications
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 02 Product Categories -->
+    <section id="categories" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-laysun-green mb-4 uppercase tracking-tight">
+                    Product Categories
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Structured production lines for commercial-grade artificial horticulture
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Artificial Trees -->
+                <div class="category-card aspect-[3/4] reveal">
+                    <img src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=600&q=80" 
+                         alt="Artificial Trees" 
+                         class="w-full h-full object-cover">
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <h3 class="font-display text-2xl font-bold uppercase tracking-wide mb-2">Artificial Trees</h3>
+                        <p class="text-sm text-gray-300 mb-4">Ficus, Palms, Olives, Bamboos</p>
+                        <div class="flex items-center gap-2 text-sm font-medium">
+                            <span>View Range</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artificial Plants -->
+                <div class="category-card aspect-[3/4] reveal">
+                    <img src="https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=600&q=80" 
+                         alt="Artificial Plants" 
+                         class="w-full h-full object-cover">
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <h3 class="font-display text-2xl font-bold uppercase tracking-wide mb-2">Artificial Plants</h3>
+                        <p class="text-sm text-gray-300 mb-4">Foliage, Succulents, Flowering</p>
+                        <div class="flex items-center gap-2 text-sm font-medium">
+                            <span>View Range</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Green Walls -->
+                <div class="category-card aspect-[3/4] reveal">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" 
+                         alt="Green Walls" 
+                         class="w-full h-full object-cover">
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <h3 class="font-display text-2xl font-bold uppercase tracking-wide mb-2">Green Walls</h3>
+                        <p class="text-sm text-gray-300 mb-4">Modular Panels, Moss Walls</p>
+                        <div class="flex items-center gap-2 text-sm font-medium">
+                            <span>View Range</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Development -->
+                <div class="custom-dev-card aspect-[3/4] reveal p-8 flex flex-col justify-end">
+                    <div class="mb-auto">
+                        <i data-lucide="settings" class="w-12 h-12 mb-6 opacity-80"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold uppercase tracking-wide mb-2">Custom Development</h3>
+                    <p class="text-sm text-gray-300 mb-4">OEM & Private Label Manufacturing</p>
+                    <div class="flex items-center gap-2 text-sm font-medium">
+                        <span>Discuss Project</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 03 Featured Products -->
+    <section class="section-padding bg-laysun-gray">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 reveal">
+                <div>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-laysun-green mb-4 uppercase tracking-tight">
+                        Featured Products
+                    </h2>
+                    <p class="text-gray-600">
+                        Commercial specifications for bulk procurement
+                    </p>
+                </div>
+                <a href="/contact/" class="mt-4 md:mt-0 inline-flex items-center gap-2 text-laysun-green font-semibold uppercase tracking-wider text-sm hover:gap-4 transition-all">
+                    Request Full Catalog
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card reveal">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=600&q=80" 
+                             alt="Commercial Ficus Tree">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs uppercase tracking-widest text-laysun-green font-semibold">Artificial Trees</span>
+                            <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                            <span class="text-xs text-gray-500">System: Modular</span>
+                        </div>
+                        <h3 class="font-display text-lg font-bold uppercase tracking-wide text-laysun-dark mb-2">
+                            Commercial Ficus Tree
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                            Engineered trunk reinforcement for high-traffic commercial environments.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="spec-tag">
+                                <i data-lucide="ruler" class="w-3 h-3"></i>
+                                1.5m - 3.5m
+                            </span>
+                            <span class="spec-tag">
+                                <i data-lucide="package" class="w-3 h-3"></i>
+                                MOQ: 50 units
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                            <span class="text-xs text-gray-500">Lead time: 30-45 days</span>
+                            <a href="/contact/" class="text-sm font-semibold text-laysun-green uppercase tracking-wider hover:underline">
+                                Inquiry
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card reveal">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600&q=80" 
+                             alt="UV-Resistant Palm Tree">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs uppercase tracking-widest text-laysun-green font-semibold">Artificial Trees</span>
+                            <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                            <span class="text-xs text-gray-500">System: Outdoor</span>
+                        </div>
+                        <h3 class="font-display text-lg font-bold uppercase tracking-wide text-laysun-dark mb-2">
+                            UV-Resistant Palm Tree
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                            Formulated for high-exposure outdoor hospitality and retail environments.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="spec-tag">
+                                <i data-lucide="ruler" class="w-3 h-3"></i>
+                                2m - 6m
+                            </span>
+                            <span class="spec-tag">
+                                <i data-lucide="package" class="w-3 h-3"></i>
+                                MOQ: 30 units
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                            <span class="text-xs text-gray-500">Lead time: 45-60 days</span>
+                            <a href="/contact/" class="text-sm font-semibold text-laysun-green uppercase tracking-wider hover:underline">
+                                Inquiry
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card reveal">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=600&q=80" 
+                             alt="Tropical Foliage Set">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs uppercase tracking-widest text-laysun-green font-semibold">Artificial Plants</span>
+                            <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                            <span class="text-xs text-gray-500">System: Interior</span>
+                        </div>
+                        <h3 class="font-display text-lg font-bold uppercase tracking-wide text-laysun-dark mb-2">
+                            Tropical Foliage Set
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                            Coordinated plant sets for hospitality and retail interior programs.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="spec-tag">
+                                <i data-lucide="ruler" class="w-3 h-3"></i>
+                                0.3m - 1.2m
+                            </span>
+                            <span class="spec-tag">
+                                <i data-lucide="package" class="w-3 h-3"></i>
+                                MOQ: 100 units
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                            <span class="text-xs text-gray-500">Lead time: 21-30 days</span>
+                            <a href="/contact/" class="text-sm font-semibold text-laysun-green uppercase tracking-wider hover:underline">
+                                Inquiry
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card reveal">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" 
+                             alt="Modular Green Wall Panel">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs uppercase tracking-widest text-laysun-green font-semibold">Green Walls</span>
+                            <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                            <span class="text-xs text-gray-500">System: Vertical</span>
+                        </div>
+                        <h3 class="font-display text-lg font-bold uppercase tracking-wide text-laysun-dark mb-2">
+                            Modular Green Wall Panel
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                            Panel-based system for scalable retail and hospitality installations.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="spec-tag">
+                                <i data-lucide="ruler" class="w-3 h-3"></i>
+                                1m x 1m standard
+                            </span>
+                            <span class="spec-tag">
+                                <i data-lucide="package" class="w-3 h-3"></i>
+                                MOQ: 50 panels
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                            <span class="text-xs text-gray-500">Lead time: 30-45 days</span>
+                            <a href="/contact/" class="text-sm font-semibold text-laysun-green uppercase tracking-wider hover:underline">
+                                Inquiry
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card reveal">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1463936575829-25148e1db1b8?w=600&q=80" 
+                             alt="Fire-Rated Foliage">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs uppercase tracking-widest text-laysun-green font-semibold">Artificial Plants</span>
+                            <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                            <span class="text-xs text-gray-500">System: Compliance</span>
+                        </div>
+                        <h3 class="font-display text-lg font-bold uppercase tracking-wide text-laysun-dark mb-2">
+                            Fire-Rated Foliage
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                            Materials aligned with commercial fire safety requirements.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="spec-tag">
+                                <i data-lucide="shield" class="w-3 h-3"></i>
+                                NFPA 701 Ready
+                            </span>
+                            <span class="spec-tag">
+                                <i data-lucide="package" class="w-3 h-3"></i>
+                                MOQ: Custom
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                            <span class="text-xs text-gray-500">Lead time: 45-60 days</span>
+                            <a href="/contact/" class="text-sm font-semibold text-laysun-green uppercase tracking-wider hover:underline">
+                                Inquiry
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card reveal">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=600&q=80" 
+                             alt="Preserved Moss Wall">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs uppercase tracking-widest text-laysun-green font-semibold">Green Walls</span>
+                            <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                            <span class="text-xs text-gray-500">System: Preserved</span>
+                        </div>
+                        <h3 class="font-display text-lg font-bold uppercase tracking-wide text-laysun-dark mb-2">
+                            Preserved Moss Wall
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                            Natural preserved moss for interior commercial branding applications.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="spec-tag">
+                                <i data-lucide="ruler" class="w-3 h-3"></i>
+                                Custom sizes
+                            </span>
+                            <span class="spec-tag">
+                                <i data-lucide="package" class="w-3 h-3"></i>
+                                MOQ: Project basis
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                            <span class="text-xs text-gray-500">Lead time: 21-45 days</span>
+                            <a href="/contact/" class="text-sm font-semibold text-laysun-green uppercase tracking-wider hover:underline">
+                                Inquiry
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 Technical Specifications -->
+    <section id="specifications" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-laysun-green mb-4 uppercase tracking-tight">
+                    Technical Specifications
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Standard commercial parameters for procurement planning
+                </p>
+            </div>
+
+            <div class="overflow-x-auto reveal">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Product Category</th>
+                            <th>Size Range</th>
+                            <th>Material</th>
+                            <th>MOQ</th>
+                            <th>Standard Lead Time</th>
+                            <th>Packaging</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-medium">Artificial Trees</td>
+                            <td>1.5m - 6m height</td>
+                            <td>PE / Metal trunk</td>
+                            <td>30-50 units</td>
+                            <td>30-60 days</td>
+                            <td>Carton / Wooden frame</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Artificial Plants</td>
+                            <td>0.3m - 1.5m height</td>
+                            <td>PE / Fabric</td>
+                            <td>100-200 units</td>
+                            <td>21-45 days</td>
+                            <td>Carton bulk packing</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Green Wall Panels</td>
+                            <td>1m x 1m standard</td>
+                            <td>PE / Iron frame</td>
+                            <td>50-100 panels</td>
+                            <td>30-45 days</td>
+                            <td>Carton / Pallet</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Custom Development</td>
+                            <td>Project specific</td>
+                            <td>Per specification</td>
+                            <td>Project basis</td>
+                            <td>60-90 days</td>
+                            <td>Custom packaging</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-8 p-6 bg-laysun-gray reveal">
+                <div class="flex items-start gap-4">
+                    <i data-lucide="info" class="w-6 h-6 text-laysun-green flex-shrink-0 mt-0.5"></i>
+                    <div>
+                        <p class="font-medium text-laysun-dark mb-1">Customization Available</p>
+                        <p class="text-sm text-gray-600">
+                            Specifications can be adjusted for project-specific requirements including fire rating, UV resistance, and private label packaging.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05 System Alignment -->
+    <section class="section-padding bg-laysun-dark text-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <h2 class="font-display text-3xl md:text-4xl font-bold mb-6 uppercase tracking-tight leading-tight">
+                        Product-System Alignment
+                    </h2>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        Each product category is developed within a system framework to ensure installation compatibility and performance consistency.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-laysun-green flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="link" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-display font-bold text-lg uppercase tracking-wide mb-2">System Integration</h3>
+                                <p class="text-sm text-gray-400">
+                                    Products designed for specific system applications (Modular/Vertical/Outdoor)
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-laysun-green flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="shield-check" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-display font-bold text-lg uppercase tracking-wide mb-2">Material Consistency</h3>
+                                <p class="text-sm text-gray-400">
+                                    Controlled PE composition and surface finishing across batches
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-laysun-green flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="copy" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-display font-bold text-lg uppercase tracking-wide mb-2">Scalable Deployment</h3>
+                                <p class="text-sm text-gray-400">
+                                    Repeatable specifications for multi-location rollouts
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <div class="aspect-[4/3] bg-gray-800 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&q=80" 
+                             alt="Manufacturing alignment" 
+                             class="w-full h-full object-cover opacity-80">
+                    </div>
+                    <div class="mt-6 p-6 bg-white/5 border border-white/10">
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            <span class="text-white font-medium">Note:</span> This is not an e-commerce catalog. All products require commercial inquiry for pricing and availability confirmation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 06 Private Label & OEM -->
+    <section class="section-padding bg-laysun-gray">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-laysun-green mb-4 uppercase tracking-tight">
+                    Private Label & OEM Services
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Structured manufacturing support for brand partners
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 reveal">
+                    <div class="w-14 h-14 bg-laysun-green/10 flex items-center justify-center mb-6">
+                        <i data-lucide="tag" class="w-7 h-7 text-laysun-green"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg uppercase tracking-wide text-laysun-dark mb-3">
+                        Brand Labeling
+                    </h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Custom tags, packaging, and documentation with your brand identity.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 reveal">
+                    <div class="w-14 h-14 bg-laysun-green/10 flex items-center justify-center mb-6">
+                        <i data-lucide="palette" class="w-7 h-7 text-laysun-green"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg uppercase tracking-wide text-laysun-dark mb-3">
+                        Custom Specifications
+                    </h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Modified dimensions, colors, and materials per your requirements.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 reveal">
+                    <div class="w-14 h-14 bg-laysun-green/10 flex items-center justify-center mb-6">
+                        <i data-lucide="box" class="w-7 h-7 text-laysun-green"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg uppercase tracking-wide text-laysun-dark mb-3">
+                        Packaging Design
+                    </h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Custom carton design, inserts, and container optimization.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center reveal">
+                <p class="text-sm text-gray-600 mb-6">
+                    Private label production available for qualified commercial clients with minimum volume commitments.
+                </p>
+                <a href="/contact/" class="inline-flex items-center gap-2 bg-laysun-green text-white px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-laysun-green-light transition-colors">
+                    Discuss Private Label
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 07 Final CTA -->
+    <section class="section-padding bg-laysun-green text-white">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center reveal">
+            <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 uppercase tracking-tight leading-tight">
+                Bulk Commercial Procurement
+            </h2>
+            <p class="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
+                Request detailed specifications, pricing, and availability for your commercial requirements.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/contact/" class="inline-flex items-center justify-center bg-white text-laysun-green px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-gray-100 transition-colors">
+                    Bulk Commercial Inquiry
+                </a>
+                <a href="/manufacturing/" class="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-white hover:text-laysun-green transition-colors">
+                    View Manufacturing
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-laysun-dark text-white py-16 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Company Info -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-8 bg-laysun-green flex items-center justify-center">
+                            <i data-lucide="layers" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="font-display font-bold text-xl tracking-tight">LAYSUN</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md leading-relaxed">
+                        Laysun Co-Creation (Guangzhou) Technology Co., Ltd.<br>
+                        Engineering artificial horticulture systems for commercial environments.
+                    </p>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <p>Email: info@laysun.co</p>
+                        <p>Sales: sales@laysun.co</p>
+                    </div>
+                </div>
+
+                <!-- Locations -->
+                <div>
+                    <h4 class="font-display font-bold text-sm uppercase tracking-wider mb-6 text-gray-300">Operations</h4>
+                    <div class="space-y-4 text-sm text-gray-400">
+                        <div>
+                            <p class="text-white font-medium mb-1">USA Office</p>
+                            <p>20 Transom Rd<br>Port Wentworth, Georgia 31407</p>
+                        </div>
+                        <div>
+                            <p class="text-white font-medium mb-1">China Factory</p>
+                            <p>No. 25 Qiaofeng Road<br>Qishi Town, Dongguan City<br>Guangdong Province</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social -->
+                <div>
+                    <h4 class="font-display font-bold text-sm uppercase tracking-wider mb-6 text-gray-300">Connect</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 border border-white/20 flex items-center justify-center hover:bg-white hover:text-laysun-dark transition-colors">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 border border-white/20 flex items-center justify-center hover:bg-white hover:text-laysun-dark transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 border border-white/20 flex items-center justify-center hover:bg-white hover:text-laysun-dark transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 uppercase tracking-wider">
+                <p>© 2024 Laysun Co-Creation (Guangzhou) Technology Co., Ltd.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-sm');
+            } else {
+                navbar.classList.remove('shadow-sm');
+            }
+        });
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
