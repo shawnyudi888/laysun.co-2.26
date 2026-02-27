@@ -16,25 +16,7 @@
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-  // 从 content/home.json 加载内容
-  fetch('content/home.json')
-    .then(response => response.json())
-    .then(data => {
-      // 更新页面标题
-      document.title = data.title;
-      
-      // 如果页面中有这些元素，更新它们
-      const titleEl = document.getElementById('page-title');
-      const subtitleEl = document.getElementById('page-subtitle');
-      const introEl = document.getElementById('page-intro');
-      
-      if (titleEl) titleEl.textContent = data.title;
-      if (subtitleEl) subtitleEl.textContent = data.subtitle;
-      if (introEl) introEl.textContent = data.intro;
-    })
-    .catch(error => console.log('Error loading content:', error));
-</script>
+    
     <script>
         tailwind.config = {
             theme: {
@@ -132,16 +114,16 @@
 
                 <!-- Desktop Menu -->
                 <div class="hidden lg:flex items-center gap-8">
-                    <a href="#systems" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">Systems</a>
-                    <a href="#manufacturing" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">Manufacturing</a>
-                    <a href="#projects" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">Projects</a>
-                    <a href="#about" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">About</a>
-                    <a href="#contact" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">Contact</a>
+                    <a href="systems.html" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">Systems</a>
+                    <a href="manufacturing.html" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">Manufacturing</a>
+                    <a href="projects.html" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">Projects</a>
+                    <a href="about.html" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">About</a>
+                    <a href="contact.html" class="text-sm font-medium text-gray-700 hover:text-laysun-green transition-colors uppercase tracking-wider">Contact</a>
                 </div>
 
                 <!-- CTA Button -->
                 <div class="hidden lg:flex items-center gap-4">
-                    <a href="#consultation" class="bg-laysun-green text-white px-6 py-3 text-sm font-medium uppercase tracking-wider hover:bg-laysun-green-light transition-colors">
+                    <a href="contact.html" class="bg-laysun-green text-white px-6 py-3 text-sm font-medium uppercase tracking-wider hover:bg-laysun-green-light transition-colors">
                         Request Consultation
                     </a>
                 </div>
@@ -156,19 +138,19 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100">
             <div class="px-6 py-4 space-y-3">
-                <a href="#systems" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">Systems</a>
-                <a href="#manufacturing" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">Manufacturing</a>
-                <a href="#projects" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">Projects</a>
-                <a href="#about" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">About</a>
-                <a href="#contact" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">Contact</a>
-                <a href="#consultation" class="block mt-4 bg-laysun-green text-white px-6 py-3 text-center text-sm font-medium uppercase tracking-wider">
+                <a href="systems.html" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">Systems</a>
+                <a href="manufacturing.html" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">Manufacturing</a>
+                <a href="projects.html" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">Projects</a>
+                <a href="about.html" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">About</a>
+                <a href="contact.html" class="block py-2 text-sm font-medium text-gray-700 uppercase tracking-wider">Contact</a>
+                <a href="contact.html" class="block mt-4 bg-laysun-green text-white px-6 py-3 text-center text-sm font-medium uppercase tracking-wider">
                     Request Consultation
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- 01 Hero Section -->
+    <!-- Hero Section -->
     <section class="relative h-screen min-h-[700px] flex items-center overflow-hidden">
         <!-- Background Image -->
         <div class="absolute inset-0 z-0">
@@ -181,17 +163,17 @@
         <!-- Content -->
         <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-20">
             <div class="max-w-3xl reveal active">
-                <h1 class="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6 text-balance uppercase tracking-tight">
+                <h1 id="hero-title" class="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6 text-balance uppercase tracking-tight">
                     Engineering Artificial Horticulture Systems for Commercial Environments
                 </h1>
-                <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl font-light leading-relaxed">
+                <p id="hero-intro" class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl font-light leading-relaxed">
                     Factory-based production aligned with system-level integration for global hospitality, retail, and commercial spaces.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#systems" class="inline-flex items-center justify-center bg-white text-laysun-green px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-gray-100 transition-colors">
+                    <a href="systems.html" class="inline-flex items-center justify-center bg-white text-laysun-green px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-gray-100 transition-colors">
                         Explore Systems
                     </a>
-                    <a href="#manufacturing" class="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-white hover:text-laysun-green transition-colors">
+                    <a href="manufacturing.html" class="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-white hover:text-laysun-green transition-colors">
                         View Manufacturing
                     </a>
                 </div>
@@ -204,7 +186,7 @@
         </div>
     </section>
 
-    <!-- 02 System Positioning Block -->
+    <!-- System Positioning Block -->
     <section id="systems" class="section-padding bg-white">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -243,7 +225,7 @@
                         </p>
                     </div>
                     <div class="mt-10">
-                        <a href="/systems" class="inline-flex items-center gap-2 text-laysun-green font-semibold uppercase tracking-wider text-sm hover:gap-4 transition-all">
+                        <a href="systems.html" class="inline-flex items-center gap-2 text-laysun-green font-semibold uppercase tracking-wider text-sm hover:gap-4 transition-all">
                             Learn About Our Systems
                             <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </a>
@@ -267,7 +249,7 @@
         </div>
     </section>
 
-    <!-- 03 Manufacturing Capability Block -->
+    <!-- Manufacturing Capability Block -->
     <section id="manufacturing" class="section-padding bg-laysun-gray">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
@@ -323,7 +305,7 @@
                         Structured manufacturing enables predictable commercial delivery.
                     </p>
 
-                    <a href="/manufacturing" class="inline-flex items-center gap-2 text-laysun-green font-semibold uppercase tracking-wider text-sm hover:gap-4 transition-all">
+                    <a href="manufacturing.html" class="inline-flex items-center gap-2 text-laysun-green font-semibold uppercase tracking-wider text-sm hover:gap-4 transition-all">
                         Explore Manufacturing
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
@@ -332,7 +314,7 @@
         </div>
     </section>
 
-    <!-- 04 Dual Path Entry (Critical Conversion Point) -->
+    <!-- Dual Path Entry -->
     <section id="consultation" class="section-padding bg-laysun-dark text-white">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
@@ -374,9 +356,9 @@
                             Project-based manufacturing
                         </li>
                     </ul>
-                    <button class="path-button w-full bg-laysun-green text-white py-4 text-sm font-semibold uppercase tracking-wider hover:bg-laysun-green-light transition-colors">
+                    <a href="contact.html" class="path-button block w-full bg-laysun-green text-white py-4 text-center text-sm font-semibold uppercase tracking-wider hover:bg-laysun-green-light transition-colors">
                         Request Project Consultation
-                    </button>
+                    </a>
                 </div>
 
                 <!-- Wholesale Path -->
@@ -408,15 +390,15 @@
                             Predictable lead times
                         </li>
                     </ul>
-                    <button class="path-button w-full bg-laysun-green text-white py-4 text-sm font-semibold uppercase tracking-wider hover:bg-laysun-green-light transition-colors">
+                    <a href="contact.html" class="path-button block w-full bg-laysun-green text-white py-4 text-center text-sm font-semibold uppercase tracking-wider hover:bg-laysun-green-light transition-colors">
                         Bulk Commercial Inquiry
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 05 Featured Project Snapshot -->
+    <!-- Featured Project Snapshot -->
     <section id="projects" class="section-padding bg-white">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-8 items-center">
@@ -471,7 +453,7 @@
                         </div>
                     </div>
 
-                    <a href="/projects" class="inline-flex items-center gap-2 text-laysun-green font-semibold uppercase tracking-wider text-sm hover:gap-4 transition-all">
+                    <a href="projects.html" class="inline-flex items-center gap-2 text-laysun-green font-semibold uppercase tracking-wider text-sm hover:gap-4 transition-all">
                         View Projects
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
@@ -480,7 +462,7 @@
         </div>
     </section>
 
-    <!-- 06 Compliance & Performance -->
+    <!-- Compliance & Performance -->
     <section class="section-padding bg-laysun-gray">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
@@ -545,7 +527,7 @@
         </div>
     </section>
 
-    <!-- 07 Global Presence -->
+    <!-- Global Presence -->
     <section class="section-padding bg-white">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -589,7 +571,6 @@
                 </div>
 
                 <div class="reveal bg-gray-100 aspect-[4/3] flex items-center justify-center relative overflow-hidden">
-                    <!-- Stylized World Map Representation -->
                     <div class="absolute inset-0 opacity-20">
                         <svg viewBox="0 0 800 400" class="w-full h-full">
                             <path fill="#1a3a2f" d="M150,200 Q200,150 250,200 T350,200 T450,200 T550,200 T650,200" stroke="none"/>
@@ -614,7 +595,7 @@
         </div>
     </section>
 
-    <!-- 08 Trust Indicators -->
+    <!-- Trust Indicators -->
     <section class="py-20 bg-laysun-gray border-y border-gray-200">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="text-center mb-12 reveal">
@@ -656,7 +637,7 @@
         </div>
     </section>
 
-    <!-- 09 Final CTA -->
+    <!-- Final CTA -->
     <section id="contact" class="section-padding bg-laysun-green text-white">
         <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center reveal">
             <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 uppercase tracking-tight leading-tight">
@@ -666,17 +647,17 @@
                 Whether for project deployment or bulk manufacturing, our team is structured to respond within 12 working hours.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#consultation" class="inline-flex items-center justify-center bg-white text-laysun-green px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-gray-100 transition-colors">
+                <a href="contact.html" class="inline-flex items-center justify-center bg-white text-laysun-green px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-gray-100 transition-colors">
                     Request System Consultation
                 </a>
-                <a href="#consultation" class="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-white hover:text-laysun-green transition-colors">
+                <a href="contact.html" class="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-white hover:text-laysun-green transition-colors">
                     Contact Manufacturing Team
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- 10 Footer -->
+    <!-- Footer -->
     <footer class="bg-laysun-dark text-white py-16 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
@@ -794,23 +775,17 @@
                 }
             });
         });
+
+        // Load content from home.json
+        fetch('content/home.json')
+            .then(r => r.json())
+            .then(data => {
+                const titleEl = document.getElementById('hero-title');
+                const introEl = document.getElementById('hero-intro');
+                if (titleEl) titleEl.textContent = data.title;
+                if (introEl) introEl.textContent = data.intro;
+            })
+            .catch(error => console.log('Error loading content:', error));
     </script>
 </body>
 </html>
-<div id="content">
-  <h1 id="title">Loading...</h1>
-  <h2 id="subtitle"></h2>
-  <p id="intro"></p>
-  <button id="btn"></button>
-</div>
-
-<script>
-  fetch('content/home.json')
-    .then(r => r.json())
-    .then(data => {
-      document.getElementById('title').textContent = data.title;
-      document.getElementById('subtitle').textContent = data.subtitle;
-      document.getElementById('intro').textContent = data.intro;
-      document.getElementById('btn').textContent = data.button;
-    });
-</script>
