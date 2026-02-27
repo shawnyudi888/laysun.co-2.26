@@ -16,7 +16,25 @@
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
+    <script>
+  // 从 content/home.json 加载内容
+  fetch('content/home.json')
+    .then(response => response.json())
+    .then(data => {
+      // 更新页面标题
+      document.title = data.title;
+      
+      // 如果页面中有这些元素，更新它们
+      const titleEl = document.getElementById('page-title');
+      const subtitleEl = document.getElementById('page-subtitle');
+      const introEl = document.getElementById('page-intro');
+      
+      if (titleEl) titleEl.textContent = data.title;
+      if (subtitleEl) subtitleEl.textContent = data.subtitle;
+      if (introEl) introEl.textContent = data.intro;
+    })
+    .catch(error => console.log('Error loading content:', error));
+</script>
     <script>
         tailwind.config = {
             theme: {
